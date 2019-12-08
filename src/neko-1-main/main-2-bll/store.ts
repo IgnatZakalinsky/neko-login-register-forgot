@@ -2,9 +2,9 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import  thunkMiddleware from "redux-thunk"
 
 const reducers = combineReducers({
-    signIn: () => {},
-    register: () => {},
-    forgot: () => {},
+    signIn: (s = {}) => s,
+    register: (s = {}) => s,
+    forgot: (s = {}) => s,
 });
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));
