@@ -1,10 +1,9 @@
 import React from 'react';
+import SignInContainer from "./SignInContainer";
 
 const SignInPage: React.FC = () => {
     return (
-        <div>
-            sign-in
-        </div>
+        <SignInContainer/>
     );
 };
 
