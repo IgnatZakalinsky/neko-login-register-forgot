@@ -3,9 +3,10 @@ import React from 'react';
 interface SignInProps {
     email: string;
     password: string;
+    signInSetEmailCallback: (email: string) => void;
 }
 
-const SignIn: React.FC<SignInProps> = ({email, password}) => {
+const SignIn: React.FC<SignInProps> = ({email, password, signInSetEmailCallback}) => {
     return (
         <div
             style={{
@@ -19,7 +20,7 @@ const SignIn: React.FC<SignInProps> = ({email, password}) => {
         >
             sign-in
             <div>
-                <input value={email}/>
+                <input value={email} onChange={e => signInSetEmailCallback(e.currentTarget.value)}/>
             </div>
             <div>
                 <input value={password}/>
