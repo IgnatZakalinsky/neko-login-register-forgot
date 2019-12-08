@@ -43,7 +43,7 @@ const Register: React.FC<RegisterProps> = (
                 <input value={password2} onChange={e => registerSetPasswordCallback2(e.currentTarget.value)}/>
             </div>
             <div>
-                <button onClick={registerCallback}>Sign In</button>
+                <button onClick={registerCallback}>Register</button>
             </div>
         </div>
     );

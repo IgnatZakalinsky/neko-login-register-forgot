@@ -1,10 +1,9 @@
 import React from 'react';
+import ForgotContainer from './ForgotContainer';
 
 const ForgotPage: React.FC = () => {
     return (
-        <div>
-            forgot
-        </div>
+        <ForgotContainer/>
     );
 };
 

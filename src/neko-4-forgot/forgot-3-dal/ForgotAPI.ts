@@ -6,6 +6,6 @@ const instance = axios.create({
 
 export const ForgotAPI = {
     forgot (email: string) {
-        return instance.post('/auth/login', {email})
+        return instance.post('/forgot', {email})
     }
 };
