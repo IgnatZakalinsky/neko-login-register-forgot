@@ -1,4 +1,6 @@
-export const signInReducer = (state = {}, action = {type: 'none'}) => {
+import {signInInitialState} from "./signInInitialState";
+
+export const signInReducer = (state = signInInitialState, action = {type: 'none'}) => {
     switch (action.type) {
 
         default: {

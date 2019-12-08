@@ -1,6 +1,11 @@
 import React from 'react';
 
-const SignIn: React.FC = () => {
+interface SignInProps {
+    email: string;
+    password: string;
+}
+
+const SignIn: React.FC<SignInProps> = ({email, password}) => {
     return (
         <div
             style={{
@@ -14,10 +19,10 @@ const SignIn: React.FC = () => {
         >
             sign-in
             <div>
-                <input value={'email'}/>
+                <input value={email}/>
             </div>
             <div>
-                <input value={'password'}/>
+                <input value={password}/>
             </div>
             <div>
                 <button>Sign In</button>
