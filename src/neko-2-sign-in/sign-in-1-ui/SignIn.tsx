@@ -4,9 +4,10 @@ interface SignInProps {
     email: string;
     password: string;
     signInSetEmailCallback: (email: string) => void;
+    signInSetPasswordCallback: (password: string) => void;
 }
 
-const SignIn: React.FC<SignInProps> = ({email, password, signInSetEmailCallback}) => {
+const SignIn: React.FC<SignInProps> = ({email, password, signInSetEmailCallback, signInSetPasswordCallback}) => {
     return (
         <div
             style={{
@@ -23,7 +24,7 @@ const SignIn: React.FC<SignInProps> = ({email, password, signInSetEmailCallback}
                 <input value={email} onChange={e => signInSetEmailCallback(e.currentTarget.value)}/>
             </div>
             <div>
-                <input value={password}/>
+                <input value={password} onChange={e => signInSetPasswordCallback(e.currentTarget.value)}/>
             </div>
             <div>
                 <button>Sign In</button>
