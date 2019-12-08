@@ -1,8 +1,9 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import  thunkMiddleware from "redux-thunk"
+import {signInReducer} from "../../neko-2-sign-in/sign-in-2-bll/signInReducer";
 
 const reducers = combineReducers({
-    signIn: (s = {}) => s,
+    signIn: signInReducer,
     register: (s = {}) => s,
     forgot: (s = {}) => s,
 });
