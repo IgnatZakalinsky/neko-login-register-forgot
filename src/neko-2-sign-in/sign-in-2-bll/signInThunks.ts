@@ -1,6 +1,6 @@
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
-import {ISignInActions, signInLoading} from "./signInActions";
+import {ISignInActions, signInError, signInLoading, signInSuccess} from "./signInActions";
 import {SignInAPI} from "../sign-in-3-dal/SignInAPI";
 
 type Return = void;
@@ -12,8 +12,16 @@ export const signIn = (): ThunkAction<Return, IAppStore, ExtraArgument, ISignInA
 
         dispatch(signInLoading(true));
         const {email, password} = getStore().signIn;
-        const data = await SignInAPI.signIn(email, password);
-        dispatch(signInLoading(false));
 
-        console.log(data)
+        try {
+                const data = await SignInAPI.signIn(email, password);
+                dispatch(signInSuccess(true));
+
+                console.log('Neko Sign-in Success!', data)
+        } catch (e) {
+                dispatch(signInError(e));
+
+                console.log('Neko Sign-in Error!', e)
+        }
+
     };

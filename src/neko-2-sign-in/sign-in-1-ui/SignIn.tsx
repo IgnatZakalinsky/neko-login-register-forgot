@@ -4,6 +4,8 @@ interface SignInProps {
     email: string;
     password: string;
     loading: boolean;
+    success: boolean;
+    error: string;
     signInSetEmailCallback: (email: string) => void;
     signInSetPasswordCallback: (password: string) => void;
     signInCallback: () => void;
@@ -14,6 +16,8 @@ const SignIn: React.FC<SignInProps> = (
         email,
         password,
         loading,
+        success,
+        error,
         signInSetEmailCallback,
         signInSetPasswordCallback,
         signInCallback
@@ -32,6 +36,8 @@ const SignIn: React.FC<SignInProps> = (
         >
             sign-in
             {loading && <div>loading...</div>}
+            {success && <div>Success!</div>}
+            {error && <div>{error}</div>}
             <div>
                 <input value={email} onChange={e => signInSetEmailCallback(e.currentTarget.value)}/>
             </div>
