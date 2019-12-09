@@ -1,5 +1,11 @@
 import {registerInitialState} from "./registerInitialState";
-import {IRegisterActions, REGISTER_SET_EMAIL, REGISTER_SET_PASSWORD, REGISTER_SET_PASSWORD_2} from "./registerActions";
+import {
+    IRegisterActions,
+    REGISTER_LOADING,
+    REGISTER_SET_EMAIL,
+    REGISTER_SET_PASSWORD,
+    REGISTER_SET_PASSWORD_2
+} from "./registerActions";
 
 export const registerReducer = (state = registerInitialState, action: IRegisterActions) => {
     switch (action.type) {
@@ -19,6 +25,12 @@ export const registerReducer = (state = registerInitialState, action: IRegisterA
             return {
                 ...state,
                 password2: action.password2,
+            }
+        }
+        case REGISTER_LOADING: {
+            return {
+                ...state,
+                loading: action.loading,
             }
         }
 

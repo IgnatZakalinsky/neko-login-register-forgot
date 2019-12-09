@@ -18,6 +18,7 @@ const RegisterContainer: React.FC = () => {
             email={registerState.email}
             password={registerState.password}
             password2={registerState.password2}
+            loading={registerState.loading}
             registerSetEmailCallback={registerSetEmailCallback}
             registerSetPasswordCallback={registerSetPasswordCallback}
             registerSetPasswordCallback2={registerSetPasswordCallback2}
