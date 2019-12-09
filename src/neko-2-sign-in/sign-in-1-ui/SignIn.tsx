@@ -3,6 +3,7 @@ import React from 'react';
 interface SignInProps {
     email: string;
     password: string;
+    loading: boolean;
     signInSetEmailCallback: (email: string) => void;
     signInSetPasswordCallback: (password: string) => void;
     signInCallback: () => void;
@@ -12,6 +13,7 @@ const SignIn: React.FC<SignInProps> = (
     {
         email,
         password,
+        loading,
         signInSetEmailCallback,
         signInSetPasswordCallback,
         signInCallback
@@ -29,6 +31,7 @@ const SignIn: React.FC<SignInProps> = (
             }}
         >
             sign-in
+            {loading && <div>loading...</div>}
             <div>
                 <input value={email} onChange={e => signInSetEmailCallback(e.currentTarget.value)}/>
             </div>

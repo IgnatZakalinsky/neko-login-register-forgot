@@ -16,6 +16,7 @@ const SignInContainer: React.FC = () => {
         <SignIn
             email={signInState.email}
             password={signInState.password}
+            loading={signInState.loading}
             signInSetEmailCallback={signInSetEmailCallback}
             signInSetPasswordCallback={signInSetPasswordCallback}
             signInCallback={signInCallback}
