@@ -2,6 +2,7 @@ import React from 'react';
 
 interface ForgotProps {
     email: string;
+    loading: boolean;
     forgotSetEmailCallback: (email: string) => void;
     forgotCallback: () => void;
 }
@@ -9,6 +10,7 @@ interface ForgotProps {
 const Forgot: React.FC<ForgotProps> = (
     {
         email,
+        loading,
         forgotSetEmailCallback,
         forgotCallback
     }
@@ -25,6 +27,7 @@ const Forgot: React.FC<ForgotProps> = (
             }}
         >
             forgot
+            {loading && <div>loading...</div>}
             <div>
                 <input value={email} onChange={e => forgotSetEmailCallback(e.currentTarget.value)}/>
             </div>

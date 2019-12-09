@@ -1,5 +1,5 @@
 import {forgotInitialState} from "./forgotInitialState";
-import {FORGOT_SET_EMAIL, IForgotActions} from "./forgotActions";
+import {FORGOT_LOADING, FORGOT_SET_EMAIL, IForgotActions} from "./forgotActions";
 
 export const forgotReducer = (state = forgotInitialState, action: IForgotActions) => {
     switch (action.type) {
@@ -9,6 +9,13 @@ export const forgotReducer = (state = forgotInitialState, action: IForgotActions
                 email: action.email,
             }
         }
+        case FORGOT_LOADING: {
+            return {
+                ...state,
+                loading: action.loading,
+            }
+        }
+
         default: {
             return state;
         }

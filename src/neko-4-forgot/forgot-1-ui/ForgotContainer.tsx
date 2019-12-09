@@ -14,6 +14,7 @@ const ForgotContainer: React.FC = () => {
     return (
         <Forgot
             email={forgotState.email}
+            loading={forgotState.loading}
             forgotSetEmailCallback={forgotSetEmailCallback}
             forgotCallback={forgotCallback}
         />
