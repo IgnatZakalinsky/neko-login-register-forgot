@@ -3,6 +3,8 @@ export interface IRegisterState {
     password: string;
     password2: string;
     loading: boolean;
+    success: boolean;
+    error: string;
 }
 
 export const registerInitialState: IRegisterState = {
@@ -10,4 +12,6 @@ export const registerInitialState: IRegisterState = {
     password: 'test password',
     password2: 'test password2',
     loading: false,
+    success: false,
+    error: '',
 };

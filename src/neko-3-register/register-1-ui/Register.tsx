@@ -5,6 +5,8 @@ interface RegisterProps {
     password: string;
     password2: string;
     loading: boolean;
+    success: boolean;
+    error: string;
     registerSetEmailCallback: (email: string) => void;
     registerSetPasswordCallback: (password: string) => void;
     registerSetPasswordCallback2: (password: string) => void;
@@ -17,12 +19,16 @@ const Register: React.FC<RegisterProps> = (
         password,
         password2,
         loading,
+        success,
+        error,
         registerSetEmailCallback,
         registerSetPasswordCallback,
         registerSetPasswordCallback2,
         registerCallback
     }
 ) => {
+    if (typeof error !== 'string') error = JSON.stringify(error);
+
     return (
         <div
             style={{
@@ -36,6 +42,8 @@ const Register: React.FC<RegisterProps> = (
         >
             register
             {loading && <div>loading...</div>}
+            {success && <div>Success!</div>}
+            {error && <div>{error}</div>}
             <div>
                 <input value={email} onChange={e => registerSetEmailCallback(e.currentTarget.value)}/>
             </div>

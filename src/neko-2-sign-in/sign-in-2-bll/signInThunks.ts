@@ -14,14 +14,14 @@ export const signIn = (): ThunkAction<Return, IAppStore, ExtraArgument, ISignInA
         const {email, password} = getStore().signIn;
 
         try {
-                const data = await SignInAPI.signIn(email, password);
-                dispatch(signInSuccess(true));
+            const data = await SignInAPI.signIn(email, password);
+            dispatch(signInSuccess(true));
 
-                console.log('Neko Sign-in Success!', data)
+            console.log('Neko Sign-in Success!', data)
         } catch (e) {
-                dispatch(signInError(e));
+            dispatch(signInError(e));
 
-                console.log('Neko Sign-in Error!', e)
+            console.log('Neko Sign-in Error!', e)
         }
 
     };

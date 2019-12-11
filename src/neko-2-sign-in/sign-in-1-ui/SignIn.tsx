@@ -23,6 +23,8 @@ const SignIn: React.FC<SignInProps> = (
         signInCallback
     }
 ) => {
+    if (typeof error !== 'string') error = JSON.stringify(error);
+
     return (
         <div
             style={{
