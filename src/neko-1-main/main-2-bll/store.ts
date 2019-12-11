@@ -16,4 +16,5 @@ export default store
 
 export type IAppStore = ReturnType<typeof reducers>
 
-// window.store = store;
+// @ts-ignore
+window.store = store;
