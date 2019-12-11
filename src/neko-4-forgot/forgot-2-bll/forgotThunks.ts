@@ -1,6 +1,6 @@
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
-import {forgotLoading, IForgotActions} from "./forgotActions";
+import {forgotLoading, IForgotActions, forgotSuccess, forgotError} from "./forgotActions";
 import {ForgotAPI} from "../forgot-3-dal/ForgotAPI";
 
 type Return = void;
@@ -12,8 +12,15 @@ export const forgot = (): ThunkAction<Return, IAppStore, ExtraArgument, IForgotA
 
         dispatch(forgotLoading(true));
         const {email} = getStore().forgot;
-        const data = await ForgotAPI.forgot(email);
-        dispatch(forgotLoading(true));
 
-        console.log(data)
+        try {
+            const data = await ForgotAPI.forgot(email);
+            dispatch(forgotSuccess(false));
+
+            console.log('Neko Forgot Success!', data)
+        } catch (e) {
+            dispatch(forgotError(e));
+
+            console.log('Neko Forgot Error!', e)
+        }
     };
