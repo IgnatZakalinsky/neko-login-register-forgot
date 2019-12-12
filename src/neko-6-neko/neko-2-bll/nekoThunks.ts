@@ -3,6 +3,7 @@ import {IAppStore} from "../../neko-1-main/main-2-bll/store";
 import {INekoActions, nekoSetName} from "./nekoActions";
 import {NekoAPI} from "../neko-3-dal/NekoAPI";
 import {ISignInActions, signInSuccess} from "../../neko-2-sign-in/sign-in-2-bll/signInActions";
+import {getCookie, setCookie} from "../../neko-5-helpers/cookies";
 
 type Return = void;
 type ExtraArgument = {};
@@ -12,14 +13,15 @@ export const getMe = (): ThunkAction<Return, IAppStore, ExtraArgument, INekoActi
     async (dispatch: ThunkDispatch<IAppStore, ExtraArgument, INekoActions | ISignInActions>, getStore: IGetStore) => {
 
         dispatch(nekoSetName('Loading...'));
-        const {token} = getStore().neko;
+        const token = getCookie('token') || '';
 
         try {
-            const response = await NekoAPI.getMe(token);
-            dispatch(nekoSetName(response.data.name));
+            const data = await NekoAPI.getMe(token);
+            dispatch(nekoSetName(data.name));
+            setCookie('token', data.token, 60 * 60 * 48); // 2 days
             dispatch(signInSuccess(true));
 
-            console.log('Neko Get Me Success!', response.data.name)
+            console.log('Neko Get Me Success!', data.name)
         } catch (e) {
             dispatch(nekoSetName(e.message));
 

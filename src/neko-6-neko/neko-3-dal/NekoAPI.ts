@@ -4,12 +4,14 @@ const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0'
 });
 
-interface IGetMeData {
+export interface IGetMeData {
     name: string;
+    token: string;
 }
 
 export const NekoAPI = {
-    getMe (token: string) {
-        return instance.post<IGetMeData>('/me', {token})
+    getMe: async (token: string) => {
+        const response = await instance.post<IGetMeData>('/me', {token});
+        return response.data;
     }
 };
