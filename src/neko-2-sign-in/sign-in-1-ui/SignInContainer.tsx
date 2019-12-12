@@ -13,6 +13,7 @@ import {emailValidator} from '../../neko-5-helpers/emailValidator';
 import {passwordValidator} from "../../neko-5-helpers/passwordValidator";
 import {getMe} from "../../neko-6-neko/neko-2-bll/nekoThunks";
 import {Redirect} from "react-router";
+import {NEKO_PATH} from "../../neko-1-main/main-1-ui/Routes";
 
 const SignInContainer: React.FC = () => {
     const signInState = useSelector((store: IAppStore) => store.signIn);
@@ -42,7 +43,7 @@ const SignInContainer: React.FC = () => {
         setTimeout(() => {
             dispatch(signInSuccess(false))
         }, 500);
-        return <Redirect to={'/neko'}/>;
+        return <Redirect to={NEKO_PATH}/>;
     }
 
     return (

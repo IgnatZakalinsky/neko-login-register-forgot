@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
+import {FORGOT_PATH, REGISTER_PATH} from "../../neko-1-main/main-1-ui/Routes";
 
 interface SignInProps {
     email: string;
@@ -52,7 +53,7 @@ const SignIn: React.FC<SignInProps> = (
                 <input value={password} onChange={e => signInSetPasswordCallback(e.currentTarget.value)}/>
             </div>
             <div>
-                <NavLink to={'/forgot'}>Forgot password?</NavLink>
+                <NavLink to={FORGOT_PATH}>Forgot password?</NavLink>
             </div>
             <div>
                 <button onClick={signInCallback}>Sign In</button>
@@ -66,7 +67,7 @@ const SignIn: React.FC<SignInProps> = (
                 Remember Me
             </div>
             <div>
-                <NavLink to={'/register'}>Registration</NavLink>
+                <NavLink to={REGISTER_PATH}>Registration</NavLink>
             </div>
         </div>
     );

@@ -5,6 +5,7 @@ import Neko from "./Neko";
 import {nekoSetName} from "../neko-2-bll/nekoActions";
 import {Redirect} from "react-router";
 import {getCookie, setCookie} from "../../neko-5-helpers/cookies";
+import {SIGN_IN_PATH} from "../../neko-1-main/main-1-ui/Routes";
 
 const NekoContainer: React.FC = () => {
     const nekoState = useSelector((store: IAppStore) => store.neko);
@@ -21,7 +22,7 @@ const NekoContainer: React.FC = () => {
         else setShow(true);
     }, [nekoState]);
     if (redirect) {
-        return <Redirect to={'/sign-in'}/>;
+        return <Redirect to={SIGN_IN_PATH}/>;
     }
     if (!show) return <div>Loading...</div>;
 

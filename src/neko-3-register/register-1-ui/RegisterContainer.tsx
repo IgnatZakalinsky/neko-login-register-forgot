@@ -12,6 +12,7 @@ import {register} from '../register-2-bll/registerThunks';
 import {emailValidator} from "../../neko-5-helpers/emailValidator";
 import {passwordValidator} from "../../neko-5-helpers/passwordValidator";
 import {Redirect} from "react-router";
+import {SIGN_IN_PATH} from "../../neko-1-main/main-1-ui/Routes";
 
 const RegisterContainer: React.FC = () => {
     const registerState = useSelector((store: IAppStore) => store.register);
@@ -39,7 +40,7 @@ const RegisterContainer: React.FC = () => {
         setTimeout(() => {
             dispatch(registerSuccess(false))
         }, 500);
-        return <Redirect to={'/sign-in'}/>;
+        return <Redirect to={SIGN_IN_PATH}/>;
     }
 
     return (

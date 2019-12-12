@@ -6,6 +6,7 @@ import {forgotError, forgotSetEmail, forgotSuccess} from "../forgot-2-bll/forgot
 import {forgot} from "../forgot-2-bll/forgotThunks";
 import {emailValidator} from "../../neko-5-helpers/emailValidator";
 import {Redirect} from "react-router";
+import {SIGN_IN_PATH} from "../../neko-1-main/main-1-ui/Routes";
 
 const ForgotContainer: React.FC = () => {
     const forgotState = useSelector((store: IAppStore) => store.forgot);
@@ -27,7 +28,7 @@ const ForgotContainer: React.FC = () => {
         setTimeout(() => {
             dispatch(forgotSuccess(false))
         }, 500);
-        return <Redirect to={'/sign-in'}/>;
+        return <Redirect to={SIGN_IN_PATH}/>;
     }
 
     return (
