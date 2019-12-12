@@ -7,20 +7,20 @@ type Return = void;
 type ExtraArgument = {};
 type IGetStore = () => IAppStore;
 
-export const hz = (): ThunkAction<Return, IAppStore, ExtraArgument, INekoActions> =>
+export const getMe = (): ThunkAction<Return, IAppStore, ExtraArgument, INekoActions> =>
     async (dispatch: ThunkDispatch<IAppStore, ExtraArgument, INekoActions>, getStore: IGetStore) => {
 
         dispatch(nekoSetName('Loading...'));
-        const {name} = getStore().neko;
+        const {token} = getStore().neko;
 
         try {
-            // const data = await NekoAPI.hz(name);
-            // dispatch(nekoSetName(data.name));
-            //
-            // console.log('Neko Logout Success!', data)
+            const response = await NekoAPI.getMe(token);
+            dispatch(nekoSetName(response.data.name));
+
+            console.log('Neko Get Me Success!', response.data.name)
         } catch (e) {
             dispatch(nekoSetName(e.message));
 
-            console.log('Neko Logout Error!', e)
+            console.log('Neko Get Me Error!', e)
         }
     };
