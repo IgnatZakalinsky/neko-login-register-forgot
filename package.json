@@ -1,6 +1,6 @@
 {
   "name": "login-register-forgot",
-  "homepage": "http://IgnatZakalinsky.github.io/time-tracker",
+  "homepage": "http://IgnatZakalinsky.github.io/neko-login-register-forgot",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
