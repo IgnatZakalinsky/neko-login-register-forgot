@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import SignIn from "./SignIn";
 import {useDispatch, useSelector} from "react-redux";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
@@ -6,12 +6,13 @@ import {
     signInError,
     signInRememberMe,
     signInSetEmail,
-    signInSetPassword
+    signInSetPassword, signInSuccess
 } from "../sign-in-2-bll/signInActions";
 import {signIn} from "../sign-in-2-bll/signInThunks";
 import {emailValidator} from '../../neko-5-helpers/emailValidator';
 import {passwordValidator} from "../../neko-5-helpers/passwordValidator";
 import {getMe} from "../../neko-6-neko/neko-2-bll/nekoThunks";
+import {Redirect} from "react-router";
 
 const SignInContainer: React.FC = () => {
     const signInState = useSelector((store: IAppStore) => store.signIn);
@@ -32,6 +33,17 @@ const SignInContainer: React.FC = () => {
     useEffect(() => {
         dispatch(getMe());
     }, []);
+
+    const [redirect, setRedirect] = useState(false);
+    if (signInState.success) {
+        setTimeout(() => setRedirect(true), 500)
+    }
+    if (redirect) {
+        setTimeout(() => {
+            dispatch(signInSuccess(false))
+        }, 500);
+        return <Redirect to={'/neko'}/>;
+    }
 
     return (
         <SignIn

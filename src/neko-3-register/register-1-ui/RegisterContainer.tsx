@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
 import Register from './Register';
@@ -6,11 +6,12 @@ import {
     registerError,
     registerSetEmail,
     registerSetPassword,
-    registerSetPassword2
+    registerSetPassword2, registerSuccess
 } from "../register-2-bll/registerActions";
 import {register} from '../register-2-bll/registerThunks';
 import {emailValidator} from "../../neko-5-helpers/emailValidator";
 import {passwordValidator} from "../../neko-5-helpers/passwordValidator";
+import {Redirect} from "react-router";
 
 const RegisterContainer: React.FC = () => {
     const registerState = useSelector((store: IAppStore) => store.register);
@@ -29,6 +30,17 @@ const RegisterContainer: React.FC = () => {
             dispatch(register());
         }
     };
+
+    const [redirect, setRedirect] = useState(false);
+    if (registerState.success) {
+        setTimeout(() => setRedirect(true), 500)
+    }
+    if (redirect) {
+        setTimeout(() => {
+            dispatch(registerSuccess(false))
+        }, 500);
+        return <Redirect to={'/sign-in'}/>;
+    }
 
     return (
         <Register
