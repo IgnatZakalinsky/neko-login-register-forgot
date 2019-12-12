@@ -1,7 +1,7 @@
 import {signInInitialState} from "./signInInitialState";
 import {
     ISignInActions, SIGN_IN_ERROR,
-    SIGN_IN_LOADING,
+    SIGN_IN_LOADING, SIGN_IN_REMEMBER_ME,
     SIGN_IN_SET_EMAIL,
     SIGN_IN_SET_PASSWORD,
     SIGN_IN_SUCCESS
@@ -47,6 +47,15 @@ export const signInReducer = (state = signInInitialState, action: ISignInActions
                 loading: false,
                 success: false,
                 error: action.error,
+            }
+        }
+        case SIGN_IN_REMEMBER_ME: {
+            return {
+                ...state,
+                loading: false,
+                success: false,
+                error: '',
+                rememberMe: action.rememberMe,
             }
         }
 

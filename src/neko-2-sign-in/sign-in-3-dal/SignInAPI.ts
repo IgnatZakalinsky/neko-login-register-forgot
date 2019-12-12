@@ -5,8 +5,8 @@ const instance = axios.create({
 });
 
 export const SignInAPI = {
-    signIn: async (email: string, password: string) => {
-        const response = await instance.post('/auth/login', {email, password, rememberMe: true});
+    signIn: async (email: string, password: string, rememberMe: boolean) => {
+        const response = await instance.post('/auth/login', {email, password, rememberMe});
         return response.data;
     }
 };

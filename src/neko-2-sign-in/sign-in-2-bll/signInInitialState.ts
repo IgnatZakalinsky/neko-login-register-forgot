@@ -4,6 +4,7 @@ export interface ISignInState {
     loading: boolean;
     success: boolean;
     error: string;
+    rememberMe: boolean;
 }
 
 export const signInInitialState: ISignInState = {
@@ -12,4 +13,5 @@ export const signInInitialState: ISignInState = {
     loading: false,
     success: false,
     error: '',
+    rememberMe: false,
 };

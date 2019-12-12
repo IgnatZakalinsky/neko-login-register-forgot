@@ -7,6 +7,8 @@ interface SignInProps {
     loading: boolean;
     success: boolean;
     error: string;
+    rememberMe: boolean;
+    signInRememberMeCallback: (saveMe: boolean) => void;
     signInSetEmailCallback: (email: string) => void;
     signInSetPasswordCallback: (password: string) => void;
     signInCallback: () => void;
@@ -19,6 +21,8 @@ const SignIn: React.FC<SignInProps> = (
         loading,
         success,
         error,
+        rememberMe,
+        signInRememberMeCallback,
         signInSetEmailCallback,
         signInSetPasswordCallback,
         signInCallback
@@ -52,6 +56,14 @@ const SignIn: React.FC<SignInProps> = (
             </div>
             <div>
                 <button onClick={signInCallback}>Sign In</button>
+            </div>
+            <div>
+                <input
+                    type={'checkbox'}
+                    checked={rememberMe}
+                    onChange={e => signInRememberMeCallback(e.currentTarget.checked)}
+                />
+                Remember Me
             </div>
             <div>
                 <NavLink to={'/register'}>Registration</NavLink>

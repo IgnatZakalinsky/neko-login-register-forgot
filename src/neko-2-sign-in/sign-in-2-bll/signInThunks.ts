@@ -12,10 +12,10 @@ export const signIn = (): ThunkAction<Return, IAppStore, ExtraArgument, ISignInA
     async (dispatch: ThunkDispatch<IAppStore, ExtraArgument, ISignInActions>, getStore: IGetStore) => {
 
         dispatch(signInLoading(true));
-        const {email, password} = getStore().signIn;
+        const {email, password, rememberMe} = getStore().signIn;
 
         try {
-            const data = await SignInAPI.signIn(email, passwordCoding(password));
+            const data = await SignInAPI.signIn(email, passwordCoding(password), rememberMe);
             dispatch(signInSuccess(true));
 
             console.log('Neko Sign-in Success!', data)
