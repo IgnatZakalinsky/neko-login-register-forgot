@@ -2,14 +2,21 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
 import Forgot from './Forgot';
-import {forgotSetEmail} from "../forgot-2-bll/forgotActions";
+import {forgotError, forgotSetEmail} from "../forgot-2-bll/forgotActions";
 import {forgot} from "../forgot-2-bll/forgotThunks";
+import {emailValidator} from "../../neko-5-helpers/emailValidator";
 
 const ForgotContainer: React.FC = () => {
     const forgotState = useSelector((store: IAppStore) => store.forgot);
     const dispatch = useDispatch();
     const forgotSetEmailCallback = (email: string) => dispatch(forgotSetEmail(email));
-    const forgotCallback = () => dispatch(forgot());
+    const forgotCallback = () => {
+        if (emailValidator(forgotState.email)) {
+            dispatch(forgot());
+        } else {
+            dispatch(forgotError('Email not valid!'));
+        }
+    };
 
     return (
         <Forgot

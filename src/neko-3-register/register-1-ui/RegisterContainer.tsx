@@ -2,8 +2,14 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
 import Register from './Register';
-import {registerSetEmail, registerSetPassword, registerSetPassword2} from "../register-2-bll/registerActions";
+import {
+    registerError,
+    registerSetEmail,
+    registerSetPassword,
+    registerSetPassword2
+} from "../register-2-bll/registerActions";
 import {register} from '../register-2-bll/registerThunks';
+import {emailValidator} from "../../neko-5-helpers/emailValidator";
 
 const RegisterContainer: React.FC = () => {
     const registerState = useSelector((store: IAppStore) => store.register);
@@ -11,7 +17,13 @@ const RegisterContainer: React.FC = () => {
     const registerSetEmailCallback = (email: string) => dispatch(registerSetEmail(email));
     const registerSetPasswordCallback = (password: string) => dispatch(registerSetPassword(password));
     const registerSetPasswordCallback2 = (password: string) => dispatch(registerSetPassword2(password));
-    const registerCallback = () => dispatch(register());
+    const registerCallback = () => {
+        if (emailValidator(registerState.email)) {
+            dispatch(register());
+        } else {
+            dispatch(registerError('Email not valid!'));
+        }
+    };
 
     return (
         <Register

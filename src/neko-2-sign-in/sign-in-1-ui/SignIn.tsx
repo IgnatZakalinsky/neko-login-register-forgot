@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 interface SignInProps {
     email: string;
@@ -47,7 +48,13 @@ const SignIn: React.FC<SignInProps> = (
                 <input value={password} onChange={e => signInSetPasswordCallback(e.currentTarget.value)}/>
             </div>
             <div>
+                <NavLink to={'/forgot'}>Forgot password?</NavLink>
+            </div>
+            <div>
                 <button onClick={signInCallback}>Sign In</button>
+            </div>
+            <div>
+                <NavLink to={'/register'}>Registration</NavLink>
             </div>
         </div>
     );
