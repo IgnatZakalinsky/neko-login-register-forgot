@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/time-tracker/static/css/main.ad277072.chunk.css",
-    "main.js": "/time-tracker/static/js/main.67c10ea7.chunk.js",
-    "main.js.map": "/time-tracker/static/js/main.67c10ea7.chunk.js.map",
-    "runtime-main.js": "/time-tracker/static/js/runtime-main.b7e6016b.js",
-    "runtime-main.js.map": "/time-tracker/static/js/runtime-main.b7e6016b.js.map",
-    "static/js/2.d515bfa9.chunk.js": "/time-tracker/static/js/2.d515bfa9.chunk.js",
-    "static/js/2.d515bfa9.chunk.js.map": "/time-tracker/static/js/2.d515bfa9.chunk.js.map",
-    "index.html": "/time-tracker/index.html",
-    "precache-manifest.4ae6094c112529569e1af6822ceffbf2.js": "/time-tracker/precache-manifest.4ae6094c112529569e1af6822ceffbf2.js",
-    "service-worker.js": "/time-tracker/service-worker.js",
-    "static/css/main.ad277072.chunk.css.map": "/time-tracker/static/css/main.ad277072.chunk.css.map",
-    "static/js/2.d515bfa9.chunk.js.LICENSE": "/time-tracker/static/js/2.d515bfa9.chunk.js.LICENSE"
+    "main.css": "/neko-login-register-forgot/static/css/main.ad277072.chunk.css",
+    "main.js": "/neko-login-register-forgot/static/js/main.9ee13096.chunk.js",
+    "main.js.map": "/neko-login-register-forgot/static/js/main.9ee13096.chunk.js.map",
+    "runtime-main.js": "/neko-login-register-forgot/static/js/runtime-main.360a71d3.js",
+    "runtime-main.js.map": "/neko-login-register-forgot/static/js/runtime-main.360a71d3.js.map",
+    "static/js/2.d515bfa9.chunk.js": "/neko-login-register-forgot/static/js/2.d515bfa9.chunk.js",
+    "static/js/2.d515bfa9.chunk.js.map": "/neko-login-register-forgot/static/js/2.d515bfa9.chunk.js.map",
+    "index.html": "/neko-login-register-forgot/index.html",
+    "precache-manifest.d94c3bea12c1bafe702453e2c04ba543.js": "/neko-login-register-forgot/precache-manifest.d94c3bea12c1bafe702453e2c04ba543.js",
+    "service-worker.js": "/neko-login-register-forgot/service-worker.js",
+    "static/css/main.ad277072.chunk.css.map": "/neko-login-register-forgot/static/css/main.ad277072.chunk.css.map",
+    "static/js/2.d515bfa9.chunk.js.LICENSE": "/neko-login-register-forgot/static/js/2.d515bfa9.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.b7e6016b.js",
+    "static/js/runtime-main.360a71d3.js",
     "static/js/2.d515bfa9.chunk.js",
     "static/css/main.ad277072.chunk.css",
-    "static/js/main.67c10ea7.chunk.js"
+    "static/js/main.9ee13096.chunk.js"
   ]
 }
