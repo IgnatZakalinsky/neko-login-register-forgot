@@ -2,6 +2,7 @@ import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
 import {IRegisterActions, registerError, registerLoading, registerSuccess} from "./registerActions";
 import {RegisterAPI} from "../register-3-dal/RegisterAPI";
+import {passwordCoding} from "../../neko-5-helpers/passwordCoding";
 
 type Return = void;
 type ExtraArgument = {};
@@ -14,7 +15,7 @@ export const register = (): ThunkAction<Return, IAppStore, ExtraArgument, IRegis
         const {email, password} = getStore().register;
 
         try {
-            const data = await RegisterAPI.register(email, password);
+            const data = await RegisterAPI.register(email, passwordCoding(password));
             dispatch(registerSuccess(false));
 
             console.log('Neko Register Success!', data)

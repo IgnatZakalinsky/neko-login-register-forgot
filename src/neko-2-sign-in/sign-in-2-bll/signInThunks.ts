@@ -2,6 +2,7 @@ import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
 import {ISignInActions, signInError, signInLoading, signInSuccess} from "./signInActions";
 import {SignInAPI} from "../sign-in-3-dal/SignInAPI";
+import {passwordCoding} from "../../neko-5-helpers/passwordCoding";
 
 type Return = void;
 type ExtraArgument = {};
@@ -14,7 +15,7 @@ export const signIn = (): ThunkAction<Return, IAppStore, ExtraArgument, ISignInA
         const {email, password} = getStore().signIn;
 
         try {
-            const data = await SignInAPI.signIn(email, password);
+            const data = await SignInAPI.signIn(email, passwordCoding(password));
             dispatch(signInSuccess(true));
 
             console.log('Neko Sign-in Success!', data)
