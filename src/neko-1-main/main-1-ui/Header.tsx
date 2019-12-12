@@ -15,6 +15,7 @@ const Header: React.FC = () => {
             <NavLink to={'/sign-in'}>sign-in</NavLink>
             <NavLink to={'/register'}>register</NavLink>
             <NavLink to={'/forgot'}>forgot</NavLink>
+            <NavLink to={'/neko'}>neko</NavLink>
         </div>
     );
 };
