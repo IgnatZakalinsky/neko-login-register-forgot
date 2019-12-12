@@ -15,9 +15,13 @@ export const forgot = (): ThunkAction<Return, IAppStore, ExtraArgument, IForgotA
 
         try {
             const data = await ForgotAPI.forgot(email);
-            dispatch(forgotSuccess(false));
+            if (data.error) {
+                dispatch(forgotError(data.error));
+            } else {
+                dispatch(forgotSuccess(false));
 
-            console.log('Neko Forgot Success!', data)
+                console.log('Neko Forgot Success!', data)
+            }
         } catch (e) {
             dispatch(forgotError(e.message));
 

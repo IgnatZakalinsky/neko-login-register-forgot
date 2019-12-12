@@ -16,9 +16,13 @@ export const register = (): ThunkAction<Return, IAppStore, ExtraArgument, IRegis
 
         try {
             const data = await RegisterAPI.register(email, passwordCoding(password));
-            dispatch(registerSuccess(false));
+            if (data.error) {
+                dispatch(registerError(data.error));
+            } else {
+                dispatch(registerSuccess(false));
 
-            console.log('Neko Register Success!', data)
+                console.log('Neko Register Success!', data)
+            }
         } catch (e) {
             dispatch(registerError(e.message));
 

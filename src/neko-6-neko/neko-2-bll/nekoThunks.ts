@@ -17,11 +17,15 @@ export const getMe = (): ThunkAction<Return, IAppStore, ExtraArgument, INekoActi
 
         try {
             const data = await NekoAPI.getMe(token);
-            dispatch(nekoSetName(data.name));
-            setCookie('token', data.token, 60 * 60 * 48); // 2 days
-            dispatch(signInSuccess(true));
+            if (data.error) {
+                dispatch(nekoSetName(data.error));
+            } else {
+                dispatch(nekoSetName(data.name));
+                setCookie('token', data.token, 60 * 60 * 48); // 2 days
+                dispatch(signInSuccess(true));
 
-            console.log('Neko Get Me Success!', data.name)
+                console.log('Neko Get Me Success!', data.name)
+            }
         } catch (e) {
             dispatch(nekoSetName(e.message));
 

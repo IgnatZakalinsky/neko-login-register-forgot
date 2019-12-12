@@ -8,6 +8,8 @@ const instance = axios.create({
 export interface IGetMeData {
     name: string;
     token: string;
+    error: string;
+    success: boolean;
 }
 
 export const NekoAPI = {

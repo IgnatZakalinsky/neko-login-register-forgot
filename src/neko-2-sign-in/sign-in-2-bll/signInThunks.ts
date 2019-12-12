@@ -18,12 +18,16 @@ export const signIn = (): ThunkAction<Return, IAppStore, ExtraArgument, ISignInA
 
         try {
             const data = await SignInAPI.signIn(email, passwordCoding(password), rememberMe);
-            dispatch(nekoSetName(data.name));
-            // setCookie('token', data.token, 60 * 60 * 48); // 2 days
-            setCookie('token', 'xxx', 60 * 60 * 48); // test without backend
-            dispatch(signInSuccess(true));
 
-            console.log('Neko Sign-in Success!', data)
+            if (data.error) {
+                dispatch(signInError(data.error));
+            } else {
+                dispatch(nekoSetName(data.name));
+                setCookie('token', data.token, 60 * 60 * 48); // 2 days
+                dispatch(signInSuccess(true));
+
+                console.log('Neko Sign-in Success!', data)
+            }
         } catch (e) {
             dispatch(signInError(e.message));
 
