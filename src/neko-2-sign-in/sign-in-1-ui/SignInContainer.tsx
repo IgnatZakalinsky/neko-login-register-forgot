@@ -5,6 +5,7 @@ import {IAppStore} from "../../neko-1-main/main-2-bll/store";
 import {signInError, signInSetEmail, signInSetPassword} from "../sign-in-2-bll/signInActions";
 import {signIn} from "../sign-in-2-bll/signInThunks";
 import {emailValidator} from '../../neko-5-helpers/emailValidator';
+import {passwordValidator} from "../../neko-5-helpers/passwordValidator";
 
 const SignInContainer: React.FC = () => {
     const signInState = useSelector((store: IAppStore) => store.signIn);
@@ -12,10 +13,12 @@ const SignInContainer: React.FC = () => {
     const signInSetEmailCallback = (email: string) => dispatch(signInSetEmail(email));
     const signInSetPasswordCallback = (password: string) => dispatch(signInSetPassword(password));
     const signInCallback = () => {
-        if (emailValidator(signInState.email)) {
-            dispatch(signIn());
-        } else {
+        if (!emailValidator(signInState.email)) {
             dispatch(signInError('Email not valid!'));
+        } else if (!passwordValidator(signInState.password)) {
+            dispatch(signInError('Password not valid! must be more than 7 characters...'));
+        } else {
+            dispatch(signIn());
         }
     };
 

@@ -10,6 +10,7 @@ import {
 } from "../register-2-bll/registerActions";
 import {register} from '../register-2-bll/registerThunks';
 import {emailValidator} from "../../neko-5-helpers/emailValidator";
+import {passwordValidator} from "../../neko-5-helpers/passwordValidator";
 
 const RegisterContainer: React.FC = () => {
     const registerState = useSelector((store: IAppStore) => store.register);
@@ -18,10 +19,14 @@ const RegisterContainer: React.FC = () => {
     const registerSetPasswordCallback = (password: string) => dispatch(registerSetPassword(password));
     const registerSetPasswordCallback2 = (password: string) => dispatch(registerSetPassword2(password));
     const registerCallback = () => {
-        if (emailValidator(registerState.email)) {
-            dispatch(register());
-        } else {
+        if (!emailValidator(registerState.email)) {
             dispatch(registerError('Email not valid!'));
+        } else if (!passwordValidator(registerState.password)) {
+            dispatch(registerError('Password not valid! must be more than 7 characters...'));
+        } else if (registerState.password !== registerState.password2) {
+            dispatch(registerError('Passwords do not match!'));
+        } else {
+            dispatch(register());
         }
     };
 
