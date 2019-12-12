@@ -22,7 +22,8 @@ const Routes: React.FC = () => {
 
             <Route path={NEKO_PATH} render={() => <NekoPage/>}/>
 
-            <Route path={START_GH_PAGES_PATH} render={() => <Redirect to={SIGN_IN_PATH}/>}/> // for gh-pages
+            <Route path={START_GH_PAGES_PATH} render={() => <Redirect to={SIGN_IN_PATH}/>}/>
+            {/*// for gh-pages*/}
         </div>
     );
 };

@@ -13,6 +13,7 @@ const Header: React.FC = () => {
                 justifyContent: 'space-around'
             }}
         >
+            urls for dev:
             <NavLink to={SIGN_IN_PATH}>sign-in</NavLink>
             <NavLink to={REGISTER_PATH}>register</NavLink>
             <NavLink to={FORGOT_PATH}>forgot</NavLink>
