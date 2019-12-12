@@ -19,7 +19,7 @@ export const forgot = (): ThunkAction<Return, IAppStore, ExtraArgument, IForgotA
 
             console.log('Neko Forgot Success!', data)
         } catch (e) {
-            dispatch(forgotError(e));
+            dispatch(forgotError(e.message));
 
             console.log('Neko Forgot Error!', e)
         }

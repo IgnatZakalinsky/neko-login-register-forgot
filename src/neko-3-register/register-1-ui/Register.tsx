@@ -41,9 +41,9 @@ const Register: React.FC<RegisterProps> = (
             }}
         >
             register
-            {loading && <div>loading...</div>}
-            {success && <div>Success!</div>}
-            {error && <div>{error}</div>}
+            {loading && <div style={{color: 'orange'}}>loading...</div>}
+            {success && <div style={{color: 'lime'}}>Success!</div>}
+            {error && <div style={{color: 'red'}}>{error}</div>}
             <div>
                 <input value={email} onChange={e => registerSetEmailCallback(e.currentTarget.value)}/>
             </div>

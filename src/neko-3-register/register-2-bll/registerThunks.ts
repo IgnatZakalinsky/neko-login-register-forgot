@@ -19,7 +19,7 @@ export const register = (): ThunkAction<Return, IAppStore, ExtraArgument, IRegis
 
             console.log('Neko Register Success!', data)
         } catch (e) {
-            dispatch(registerError(e));
+            dispatch(registerError(e.message));
 
             console.log('Neko Register Error!', e)
         }

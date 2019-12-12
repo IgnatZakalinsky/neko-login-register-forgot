@@ -19,7 +19,7 @@ export const signIn = (): ThunkAction<Return, IAppStore, ExtraArgument, ISignInA
 
             console.log('Neko Sign-in Success!', data)
         } catch (e) {
-            dispatch(signInError(e));
+            dispatch(signInError(e.message));
 
             console.log('Neko Sign-in Error!', e)
         }
