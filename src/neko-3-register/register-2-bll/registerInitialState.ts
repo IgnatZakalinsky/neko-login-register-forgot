@@ -8,7 +8,7 @@ export interface IRegisterState {
 }
 
 export const registerInitialState: IRegisterState = {
-    email: 'test email',
+    email: 'test@email.com',
     password: 'test password',
     password2: 'test password2',
     loading: false,

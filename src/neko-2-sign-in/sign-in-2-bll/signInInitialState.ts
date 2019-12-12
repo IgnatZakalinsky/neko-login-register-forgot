@@ -8,7 +8,7 @@ export interface ISignInState {
 }
 
 export const signInInitialState: ISignInState = {
-    email: 'test email',
+    email: 'test@email.com',
     password: 'test password',
     loading: false,
     success: false,

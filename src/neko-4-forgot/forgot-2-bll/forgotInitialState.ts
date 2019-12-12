@@ -6,7 +6,7 @@ export interface IForgotState {
 }
 
 export const forgotInitialState: IForgotState = {
-    email: 'test email',
+    email: 'test@email.com',
     loading: false,
     success: false,
     error: '',
