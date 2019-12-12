@@ -6,7 +6,7 @@ const instance = axios.create({
 
 export const ForgotAPI = {
     forgot: async (email: string) => {
-        const response = await instance.post('/forgot', {email});
+        const response = await instance.post('/auth/forgot', {email});
         return response.data;
     }
 };

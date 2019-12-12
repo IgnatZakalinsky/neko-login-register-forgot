@@ -11,7 +11,7 @@ export interface IGetMeData {
 
 export const NekoAPI = {
     getMe: async (token: string) => {
-        const response = await instance.post<IGetMeData>('/me', {token});
+        const response = await instance.post<IGetMeData>('/auth/me', {token});
         return response.data;
     }
 };
