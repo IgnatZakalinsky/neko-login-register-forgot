@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import {FORGOT_PATH, NEKO_PATH, REGISTER_PATH, SIGN_IN_PATH} from './Routes';
+import {setCookie} from "../../neko-5-helpers/cookies";
 
 const Header: React.FC = () => {
     return (
@@ -13,11 +14,12 @@ const Header: React.FC = () => {
                 justifyContent: 'space-around'
             }}
         >
-            urls for dev:
+            Header for dev:
             <NavLink to={SIGN_IN_PATH}>sign-in</NavLink>
             <NavLink to={REGISTER_PATH}>register</NavLink>
             <NavLink to={FORGOT_PATH}>forgot</NavLink>
             <NavLink to={NEKO_PATH}>neko</NavLink>
+            <button onClick={() => setCookie('token', 'xxx', 60 * 60 * 48)}>add token</button>
         </div>
     );
 };
