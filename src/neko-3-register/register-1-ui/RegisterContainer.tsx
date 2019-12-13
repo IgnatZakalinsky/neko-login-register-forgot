@@ -3,10 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
 import Register from './Register';
 import {
-    registerError,
-    registerSetEmail,
-    registerSetPassword,
-    registerSetPassword2, registerSuccess
+    registerError, registerSuccess
 } from "../register-2-bll/registerActions";
 import {register} from '../register-2-bll/registerThunks';
 import {emailValidator} from "../../neko-5-helpers/emailValidator";
@@ -17,18 +14,20 @@ import {SIGN_IN_PATH} from "../../neko-1-main/main-1-ui/Routes";
 const RegisterContainer: React.FC = () => {
     const registerState = useSelector((store: IAppStore) => store.register);
     const dispatch = useDispatch();
-    const registerSetEmailCallback = (email: string) => dispatch(registerSetEmail(email));
-    const registerSetPasswordCallback = (password: string) => dispatch(registerSetPassword(password));
-    const registerSetPasswordCallback2 = (password: string) => dispatch(registerSetPassword2(password));
+
+    const [email, setEmail] = useState('test@emali.nya');
+    const [password, setPassword] = useState('test password nya');
+    const [password2, setPassword2] = useState('test password nya2');
+
     const registerCallback = () => {
-        if (!emailValidator(registerState.email)) {
+        if (!emailValidator(email)) {
             dispatch(registerError('Email not valid!'));
-        } else if (!passwordValidator(registerState.password)) {
+        } else if (!passwordValidator(password)) {
             dispatch(registerError('Password not valid! must be more than 7 characters...'));
-        } else if (registerState.password !== registerState.password2) {
+        } else if (password !== password2) {
             dispatch(registerError('Passwords do not match!'));
         } else {
-            dispatch(register());
+            dispatch(register(email, password));
         }
     };
 
@@ -45,15 +44,15 @@ const RegisterContainer: React.FC = () => {
 
     return (
         <Register
-            email={registerState.email}
-            password={registerState.password}
-            password2={registerState.password2}
+            email={email}
+            password={password}
+            password2={password2}
             loading={registerState.loading}
             success={registerState.success}
             error={registerState.error}
-            registerSetEmailCallback={registerSetEmailCallback}
-            registerSetPasswordCallback={registerSetPasswordCallback}
-            registerSetPasswordCallback2={registerSetPasswordCallback2}
+            registerSetEmailCallback={setEmail}
+            registerSetPasswordCallback={setPassword}
+            registerSetPasswordCallback2={setPassword2}
             registerCallback={registerCallback}
         />
     );

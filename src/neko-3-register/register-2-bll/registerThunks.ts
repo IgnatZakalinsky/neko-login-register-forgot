@@ -8,11 +8,10 @@ type Return = void;
 type ExtraArgument = {};
 type IGetStore = () => IAppStore;
 
-export const register = (): ThunkAction<Return, IAppStore, ExtraArgument, IRegisterActions> =>
+export const register = (email: string, password: string): ThunkAction<Return, IAppStore, ExtraArgument, IRegisterActions> =>
     async (dispatch: ThunkDispatch<IAppStore, ExtraArgument, IRegisterActions>, getStore: IGetStore) => {
 
         dispatch(registerLoading(true));
-        const {email, password} = getStore().register;
 
         try {
             const data = await RegisterAPI.register(email, passwordCoding(password));
