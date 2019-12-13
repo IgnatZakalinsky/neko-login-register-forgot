@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/neko-login-register-forgot/static/css/main.ad277072.chunk.css",
-    "main.js": "/neko-login-register-forgot/static/js/main.c7e343b6.chunk.js",
-    "main.js.map": "/neko-login-register-forgot/static/js/main.c7e343b6.chunk.js.map",
+    "main.js": "/neko-login-register-forgot/static/js/main.47ccae9d.chunk.js",
+    "main.js.map": "/neko-login-register-forgot/static/js/main.47ccae9d.chunk.js.map",
     "runtime-main.js": "/neko-login-register-forgot/static/js/runtime-main.360a71d3.js",
     "runtime-main.js.map": "/neko-login-register-forgot/static/js/runtime-main.360a71d3.js.map",
-    "static/js/2.d515bfa9.chunk.js": "/neko-login-register-forgot/static/js/2.d515bfa9.chunk.js",
-    "static/js/2.d515bfa9.chunk.js.map": "/neko-login-register-forgot/static/js/2.d515bfa9.chunk.js.map",
+    "static/js/2.978b9e68.chunk.js": "/neko-login-register-forgot/static/js/2.978b9e68.chunk.js",
+    "static/js/2.978b9e68.chunk.js.map": "/neko-login-register-forgot/static/js/2.978b9e68.chunk.js.map",
     "index.html": "/neko-login-register-forgot/index.html",
-    "precache-manifest.e7227f9386eb442404bd0fb4a9f4a06d.js": "/neko-login-register-forgot/precache-manifest.e7227f9386eb442404bd0fb4a9f4a06d.js",
+    "precache-manifest.980f53141a88da58f59855721e0174fe.js": "/neko-login-register-forgot/precache-manifest.980f53141a88da58f59855721e0174fe.js",
     "service-worker.js": "/neko-login-register-forgot/service-worker.js",
     "static/css/main.ad277072.chunk.css.map": "/neko-login-register-forgot/static/css/main.ad277072.chunk.css.map",
-    "static/js/2.d515bfa9.chunk.js.LICENSE": "/neko-login-register-forgot/static/js/2.d515bfa9.chunk.js.LICENSE"
+    "static/js/2.978b9e68.chunk.js.LICENSE": "/neko-login-register-forgot/static/js/2.978b9e68.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.360a71d3.js",
-    "static/js/2.d515bfa9.chunk.js",
+    "static/js/2.978b9e68.chunk.js",
     "static/css/main.ad277072.chunk.css",
-    "static/js/main.c7e343b6.chunk.js"
+    "static/js/main.47ccae9d.chunk.js"
   ]
 }
