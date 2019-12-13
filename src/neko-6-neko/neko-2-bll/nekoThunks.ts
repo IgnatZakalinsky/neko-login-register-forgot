@@ -19,6 +19,8 @@ export const getMe = (): ThunkAction<Return, IAppStore, ExtraArgument, INekoActi
             const data = await NekoAPI.getMe(token);
             if (data.error) {
                 dispatch(nekoSetName(data.error));
+                console.log('Neko Get Me Error!', data.error, token);
+                setCookie('token', '', -1000);
             } else {
                 dispatch(nekoSetName(data.name));
                 setCookie('token', data.token, 60 * 60 * 48); // 2 days
