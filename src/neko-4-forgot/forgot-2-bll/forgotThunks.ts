@@ -7,11 +7,10 @@ type Return = void;
 type ExtraArgument = {};
 type IGetStore = () => IAppStore;
 
-export const forgot = (): ThunkAction<Return, IAppStore, ExtraArgument, IForgotActions> =>
+export const forgot = (email: string): ThunkAction<Return, IAppStore, ExtraArgument, IForgotActions> =>
     async (dispatch: ThunkDispatch<IAppStore, ExtraArgument, IForgotActions>, getStore: IGetStore) => {
 
         dispatch(forgotLoading(true));
-        const {email} = getStore().forgot;
 
         try {
             const data = await ForgotAPI.forgot(email);

@@ -1,16 +1,8 @@
 import {forgotInitialState} from "./forgotInitialState";
-import {FORGOT_LOADING, FORGOT_SET_EMAIL, FORGOT_SUCCESS, IForgotActions, FORGOT_ERROR} from "./forgotActions";
+import {FORGOT_LOADING, FORGOT_SUCCESS, IForgotActions, FORGOT_ERROR} from "./forgotActions";
 
 export const forgotReducer = (state = forgotInitialState, action: IForgotActions) => {
     switch (action.type) {
-        case FORGOT_SET_EMAIL: {
-            return {
-                ...state,
-                email: action.email,
-                error: '',
-                success: false,
-            }
-        }
         case FORGOT_LOADING: {
             return {
                 ...state,

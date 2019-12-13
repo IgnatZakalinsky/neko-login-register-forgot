@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
 import Forgot from './Forgot';
-import {forgotError, forgotSetEmail, forgotSuccess} from "../forgot-2-bll/forgotActions";
+import {forgotError, forgotSuccess} from "../forgot-2-bll/forgotActions";
 import {forgot} from "../forgot-2-bll/forgotThunks";
 import {emailValidator} from "../../neko-5-helpers/emailValidator";
 import {Redirect} from "react-router";
@@ -11,10 +11,12 @@ import {SIGN_IN_PATH} from "../../neko-1-main/main-1-ui/Routes";
 const ForgotContainer: React.FC = () => {
     const forgotState = useSelector((store: IAppStore) => store.forgot);
     const dispatch = useDispatch();
-    const forgotSetEmailCallback = (email: string) => dispatch(forgotSetEmail(email));
+
+    const [email, setEmail] = useState('test@emali.nya');
+
     const forgotCallback = () => {
-        if (emailValidator(forgotState.email)) {
-            dispatch(forgot());
+        if (emailValidator(email)) {
+            dispatch(forgot(email));
         } else {
             dispatch(forgotError('Email not valid!'));
         }
@@ -33,11 +35,11 @@ const ForgotContainer: React.FC = () => {
 
     return (
         <Forgot
-            email={forgotState.email}
+            email={email}
             loading={forgotState.loading}
             success={forgotState.success}
             error={forgotState.error}
-            forgotSetEmailCallback={forgotSetEmailCallback}
+            forgotSetEmailCallback={setEmail}
             forgotCallback={forgotCallback}
         />
     );
