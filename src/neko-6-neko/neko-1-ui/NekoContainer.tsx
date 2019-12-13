@@ -34,6 +34,8 @@ const NekoContainer: React.FC = () => {
     return (
         <Neko
             name={nekoState.name}
+            loading={nekoState.loading}
+            error={nekoState.error}
             logoutCallback={logoutCallback}
         />
     );

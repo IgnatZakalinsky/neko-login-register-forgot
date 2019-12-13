@@ -2,12 +2,16 @@ import React from 'react';
 
 interface NekoProps {
     name: string;
+    loading: boolean;
+    error: string;
     logoutCallback: () => void;
 }
 
 const Neko: React.FC<NekoProps> = (
     {
         name,
+        loading,
+        error,
         logoutCallback,
     }
 ) => {
@@ -24,6 +28,8 @@ const Neko: React.FC<NekoProps> = (
             }}
         >
             neko
+            {loading && <div style={{color: 'orange'}}>loading...</div>}
+            {error && <div style={{color: 'red'}}>{error}</div>}
             {name && <div style={{color: 'lime'}}>{name}</div>}
             <div>
                 <button onClick={logoutCallback}>logout</button>
