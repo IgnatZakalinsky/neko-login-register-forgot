@@ -10,11 +10,10 @@ type Return = void;
 type ExtraArgument = {};
 type IGetStore = () => IAppStore;
 
-export const signIn = (): ThunkAction<Return, IAppStore, ExtraArgument, ISignInActions> =>
+export const signIn = (email: string, password: string, rememberMe: boolean): ThunkAction<Return, IAppStore, ExtraArgument, ISignInActions> =>
     async (dispatch: ThunkDispatch<IAppStore, ExtraArgument, ISignInActions | INekoActions>, getStore: IGetStore) => {
 
         dispatch(signInLoading(true));
-        const {email, password, rememberMe} = getStore().signIn;
 
         try {
             const data = await SignInAPI.signIn(email, passwordCoding(password), rememberMe);

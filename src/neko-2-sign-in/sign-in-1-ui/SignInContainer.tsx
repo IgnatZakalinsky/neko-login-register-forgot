@@ -3,10 +3,7 @@ import SignIn from "./SignIn";
 import {useDispatch, useSelector} from "react-redux";
 import {IAppStore} from "../../neko-1-main/main-2-bll/store";
 import {
-    signInError,
-    signInRememberMe,
-    signInSetEmail,
-    signInSetPassword, signInSuccess
+    signInError, signInSuccess
 } from "../sign-in-2-bll/signInActions";
 import {signIn} from "../sign-in-2-bll/signInThunks";
 import {emailValidator} from '../../neko-5-helpers/emailValidator';
@@ -18,16 +15,18 @@ import {NEKO_PATH} from "../../neko-1-main/main-1-ui/Routes";
 const SignInContainer: React.FC = () => {
     const signInState = useSelector((store: IAppStore) => store.signIn);
     const dispatch = useDispatch();
-    const signInSetEmailCallback = (email: string) => dispatch(signInSetEmail(email));
-    const signInSetPasswordCallback = (password: string) => dispatch(signInSetPassword(password));
-    const signInRememberMeCallback = (saveMe: boolean) => dispatch(signInRememberMe(saveMe));
+
+    const [email, setEmail] = useState('test@emali.nya');
+    const [password, setPassword] = useState('test password nya');
+    const [rememberMe, setRememberMe] = useState(false);
+
     const signInCallback = () => {
-        if (!emailValidator(signInState.email)) {
+        if (!emailValidator(email)) {
             dispatch(signInError('Email not valid!'));
-        } else if (!passwordValidator(signInState.password)) {
+        } else if (!passwordValidator(password)) {
             dispatch(signInError('Password not valid! must be more than 7 characters...'));
         } else {
-            dispatch(signIn());
+            dispatch(signIn(email, password, rememberMe));
         }
     };
 
@@ -48,15 +47,15 @@ const SignInContainer: React.FC = () => {
 
     return (
         <SignIn
-            email={signInState.email}
-            password={signInState.password}
+            email={email}
+            password={password}
             loading={signInState.loading}
             success={signInState.success}
             error={signInState.error}
-            rememberMe={signInState.rememberMe}
-            signInRememberMeCallback={signInRememberMeCallback}
-            signInSetEmailCallback={signInSetEmailCallback}
-            signInSetPasswordCallback={signInSetPasswordCallback}
+            rememberMe={rememberMe}
+            signInRememberMeCallback={setRememberMe}
+            signInSetEmailCallback={setEmail}
+            signInSetPasswordCallback={setPassword}
             signInCallback={signInCallback}
         />
     );
