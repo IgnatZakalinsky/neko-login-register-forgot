@@ -1,11 +1,7 @@
-export const NEKO_SET_NAME = 'NEKO/SET_NAME';
 export const NEKO_LOADING = 'NEKO/LOADING';
 export const NEKO_ERROR = 'NEKO/ERROR';
 
-interface INekoSetName {
-    type: typeof NEKO_SET_NAME;
-    name: string;
-}
+export const NEKO_SET_NAME = 'NEKO/SET_NAME';
 
 interface INekoLoading {
     type: typeof NEKO_LOADING;
@@ -16,12 +12,12 @@ interface INekoError {
     error: string;
 }
 
-export type INekoActions = INekoSetName | INekoLoading | INekoError;
+interface INekoSetName {
+    type: typeof NEKO_SET_NAME;
+    name: string;
+}
 
-export const nekoSetName = (name: string): INekoSetName => ({
-    type: NEKO_SET_NAME,
-    name,
-});
+export type INekoActions = INekoLoading | INekoError | INekoSetName;
 
 export const nekoLoading = (loading: boolean): INekoLoading => ({
     type: NEKO_LOADING,
@@ -30,4 +26,9 @@ export const nekoLoading = (loading: boolean): INekoLoading => ({
 export const nekoError = (error: string): INekoError => ({
     type: NEKO_ERROR,
     error,
+});
+
+export const nekoSetName = (name: string): INekoSetName => ({
+    type: NEKO_SET_NAME,
+    name,
 });

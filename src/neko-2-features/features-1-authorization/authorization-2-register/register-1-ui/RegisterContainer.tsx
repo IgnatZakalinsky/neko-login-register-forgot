@@ -4,8 +4,8 @@ import {IAppStore} from "../../../../neko-1-main/main-2-bll/store";
 import Register from './Register';
 import {registerError, registerSuccess} from "../register-2-bll/registerActions";
 import {register} from '../register-2-bll/registerThunks';
-import {emailValidator} from "../../../../neko-5-helpers/emailValidator";
-import {passwordValidator} from "../../../../neko-5-helpers/passwordValidator";
+import {emailValidator} from "../../../features-2-helpers/emailValidator";
+import {passwordValidator} from "../../../features-2-helpers/passwordValidator";
 import {Redirect} from "react-router";
 import {SIGN_IN_PATH} from "../../../../neko-1-main/main-1-ui/Routes";
 

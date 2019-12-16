@@ -1,19 +1,24 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {IAppStore} from "../../neko-1-main/main-2-bll/store";
+import {IAppStore} from "../../../../neko-1-main/main-2-bll/store";
 import Forgot from './Forgot';
 import {forgotError, forgotSuccess} from "../forgot-2-bll/forgotActions";
 import {forgot} from "../forgot-2-bll/forgotThunks";
-import {emailValidator} from "../../neko-5-helpers/emailValidator";
+import {emailValidator} from "../../../features-2-helpers/emailValidator";
 import {Redirect} from "react-router";
-import {SIGN_IN_PATH} from "../../neko-1-main/main-1-ui/Routes";
+import {SIGN_IN_PATH} from "../../../../neko-1-main/main-1-ui/Routes";
 
 const ForgotContainer: React.FC = () => {
-    const forgotState = useSelector((store: IAppStore) => store.forgot);
+    // redux
+    const {loading, error, success} = useSelector((store: IAppStore) => store.forgot);
     const dispatch = useDispatch();
 
+    // local state
     const [email, setEmail] = useState('test@emali.nya');
 
+    const [redirect, setRedirect] = useState(false);
+
+    // callbacks
     const forgotCallback = () => {
         if (emailValidator(email)) {
             dispatch(forgot(email));
@@ -22,8 +27,8 @@ const ForgotContainer: React.FC = () => {
         }
     };
 
-    const [redirect, setRedirect] = useState(false);
-    if (forgotState.success) {
+    // redirect logic
+    if (success) {
         setTimeout(() => setRedirect(true), 500)
     }
     if (redirect) {
@@ -35,11 +40,14 @@ const ForgotContainer: React.FC = () => {
 
     return (
         <Forgot
+            loading={loading}
+            error={error}
+            success={success}
+
             email={email}
-            loading={forgotState.loading}
-            success={forgotState.success}
-            error={forgotState.error}
+
             forgotSetEmailCallback={setEmail}
+
             forgotCallback={forgotCallback}
         />
     );

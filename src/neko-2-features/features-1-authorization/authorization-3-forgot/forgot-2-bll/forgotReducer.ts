@@ -1,5 +1,5 @@
 import {forgotInitialState} from "./forgotInitialState";
-import {FORGOT_LOADING, FORGOT_SUCCESS, IForgotActions, FORGOT_ERROR} from "./forgotActions";
+import {IForgotActions, FORGOT_LOADING, FORGOT_ERROR, FORGOT_SUCCESS} from "./forgotActions";
 
 export const forgotReducer = (state = forgotInitialState, action: IForgotActions) => {
     switch (action.type) {
@@ -15,16 +15,16 @@ export const forgotReducer = (state = forgotInitialState, action: IForgotActions
             return {
                 ...state,
                 loading: false,
-                success: action.success,
                 error: '',
+                success: action.success,
             }
         }
         case FORGOT_ERROR: {
             return {
                 ...state,
                 loading: false,
-                success: false,
                 error: action.error,
+                success: false,
             }
         }
 

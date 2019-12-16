@@ -1,11 +1,13 @@
 export interface INekoState {
-    name: string;
     loading: boolean;
     error: string;
+
+    name: string;
 }
 
 export const nekoInitialState: INekoState = {
-    name: 'test name',
     loading: false,
     error: '',
+
+    name: 'test name',
 };

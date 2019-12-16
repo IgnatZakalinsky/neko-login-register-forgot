@@ -1,5 +1,5 @@
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
-import {IAppStore} from "../../neko-1-main/main-2-bll/store";
+import {IAppStore} from "../../../../neko-1-main/main-2-bll/store";
 import {forgotLoading, IForgotActions, forgotSuccess, forgotError} from "./forgotActions";
 import {ForgotAPI} from "../forgot-3-dal/ForgotAPI";
 
@@ -14,8 +14,10 @@ export const forgot = (email: string): ThunkAction<Return, IAppStore, ExtraArgum
 
         try {
             const data = await ForgotAPI.forgot(email);
+
             if (data.error) {
                 dispatch(forgotError(data.error));
+
             } else {
                 dispatch(forgotSuccess(true));
 

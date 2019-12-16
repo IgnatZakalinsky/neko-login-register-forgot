@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {baseURL} from "../../base-url";
+import {baseURL} from "../../../base-url";
 
 const instance = axios.create({
     baseURL
@@ -8,13 +8,14 @@ const instance = axios.create({
 export interface IGetMeData {
     name: string;
     token: string;
+
     error: string;
-    success: boolean;
 }
 
 export const NekoAPI = {
     getMe: async (token: string) => {
         const response = await instance.post<IGetMeData>('/auth/me', {token});
         return response.data;
-    }
+    },
+
 };

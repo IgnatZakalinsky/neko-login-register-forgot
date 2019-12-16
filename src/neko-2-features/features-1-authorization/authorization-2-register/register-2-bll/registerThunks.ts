@@ -2,7 +2,7 @@ import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {IAppStore} from "../../../../neko-1-main/main-2-bll/store";
 import {IRegisterActions, registerError, registerLoading, registerSuccess} from "./registerActions";
 import {RegisterAPI} from "../register-3-dal/RegisterAPI";
-import {passwordCoding} from "../../../../neko-5-helpers/passwordCoding";
+import {passwordCoding} from "../../../features-2-helpers/passwordCoding";
 
 type Return = void;
 type ExtraArgument = {};
