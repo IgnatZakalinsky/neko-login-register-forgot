@@ -1,8 +1,8 @@
 import {signInInitialState} from "./signInInitialState";
 import {
     ISignInActions,
-    SIGN_IN_ERROR,
     SIGN_IN_LOADING,
+    SIGN_IN_ERROR,
     SIGN_IN_SUCCESS
 } from "./signInActions";
 

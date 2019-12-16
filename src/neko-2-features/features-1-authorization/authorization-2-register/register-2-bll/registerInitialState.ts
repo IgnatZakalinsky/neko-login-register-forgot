@@ -1,11 +1,11 @@
 export interface IRegisterState {
     loading: boolean;
-    success: boolean;
     error: string;
+    success: boolean;
 }
 
 export const registerInitialState: IRegisterState = {
     loading: false,
-    success: false,
     error: '',
+    success: false,
 };

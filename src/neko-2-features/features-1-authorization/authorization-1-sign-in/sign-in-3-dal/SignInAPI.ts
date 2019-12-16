@@ -8,6 +8,7 @@ const instance = axios.create({
 export interface ISignInData {
     name: string;
     token: string;
+
     error: string;
 }
 
