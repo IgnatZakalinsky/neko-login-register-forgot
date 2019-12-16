@@ -10,27 +10,31 @@ type Return = void;
 type ExtraArgument = {};
 type IGetStore = () => IAppStore;
 
-export const signIn = (email: string, password: string, rememberMe: boolean): ThunkAction<Return, IAppStore, ExtraArgument, ISignInActions> =>
-    async (dispatch: ThunkDispatch<IAppStore, ExtraArgument, ISignInActions | INekoActions>, getStore: IGetStore) => {
+export const signIn =
+    (email: string, password: string, rememberMe: boolean)
+        : ThunkAction<Return, IAppStore, ExtraArgument, ISignInActions> =>
+        async (
+            dispatch: ThunkDispatch<IAppStore, ExtraArgument, ISignInActions | INekoActions>,
+            getStore: IGetStore
+        ) => {
+            dispatch(signInLoading(true));
 
-        dispatch(signInLoading(true));
+            try {
+                const data = await SignInAPI.signIn(email, passwordCoding(password), rememberMe);
 
-        try {
-            const data = await SignInAPI.signIn(email, passwordCoding(password), rememberMe);
+                if (data.error) {
+                    dispatch(signInError(data.error));
 
-            if (data.error) {
-                dispatch(signInError(data.error));
-            } else {
-                dispatch(nekoSetName(data.name));
-                setCookie('token', data.token, 60 * 60 * 48); // 2 days
-                dispatch(signInSuccess(true));
+                } else {
+                    dispatch(nekoSetName(data.name));
+                    setCookie('token', data.token, 60 * 60 * 48); // 2 days
+                    dispatch(signInSuccess(true));
 
-                console.log('Neko Sign-in Success!', data)
+                    console.log('Neko Sign-in Success!', data)
+                }
+            } catch (e) {
+                dispatch(signInError(e.message));
+
+                console.log('Neko Sign-in Error!', e)
             }
-        } catch (e) {
-            dispatch(signInError(e.message));
-
-            console.log('Neko Sign-in Error!', e)
-        }
-
-    };
+        };

@@ -1,11 +1,11 @@
 export interface ISignInState {
     loading: boolean;
-    success: boolean;
     error: string;
+    success: boolean;
 }
 
 export const signInInitialState: ISignInState = {
     loading: false,
-    success: false,
     error: '',
+    success: false,
 };

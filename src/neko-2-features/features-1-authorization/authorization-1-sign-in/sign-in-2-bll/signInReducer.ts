@@ -1,6 +1,7 @@
 import {signInInitialState} from "./signInInitialState";
 import {
-    ISignInActions, SIGN_IN_ERROR,
+    ISignInActions,
+    SIGN_IN_ERROR,
     SIGN_IN_LOADING,
     SIGN_IN_SUCCESS
 } from "./signInActions";
@@ -19,16 +20,16 @@ export const signInReducer = (state = signInInitialState, action: ISignInActions
             return {
                 ...state,
                 loading: false,
-                success: action.success,
                 error: '',
+                success: action.success,
             }
         }
         case SIGN_IN_ERROR: {
             return {
                 ...state,
                 loading: false,
-                success: false,
                 error: action.error,
+                success: false,
             }
         }
 
