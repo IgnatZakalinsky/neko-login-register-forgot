@@ -13,13 +13,22 @@ import {Redirect} from "react-router";
 import {NEKO_PATH} from "../../../../neko-1-main/main-1-ui/Routes";
 
 const SignInContainer: React.FC = () => {
-    const signInState = useSelector((store: IAppStore) => store.signIn);
+    // redux
+    const {loading, error, success} = useSelector((store: IAppStore) => store.signIn);
     const dispatch = useDispatch();
 
+    // local state
     const [email, setEmail] = useState('test@emali.nya');
     const [password, setPassword] = useState('test password nya');
     const [rememberMe, setRememberMe] = useState(false);
+    const [redirect, setRedirect] = useState(false);
 
+    // useEffects
+    useEffect(() => {
+        dispatch(getMe());
+    }, []);
+
+    // callbacks
     const signInCallback = () => {
         if (!emailValidator(email)) {
             dispatch(signInError('Email not valid!'));
@@ -30,13 +39,11 @@ const SignInContainer: React.FC = () => {
         }
     };
 
-    useEffect(() => {
-        dispatch(getMe());
-    }, []);
-
-    const [redirect, setRedirect] = useState(false);
-    if (signInState.success) {
-        setTimeout(() => setRedirect(true), 500)
+    // redirect logic
+    if (success) {
+        setTimeout(() => {
+            setRedirect(true);
+        }, 500);
     }
     if (redirect) {
         setTimeout(() => {
@@ -47,15 +54,18 @@ const SignInContainer: React.FC = () => {
 
     return (
         <SignIn
+            loading={loading}
+            error={error}
+            success={success}
+
             email={email}
             password={password}
-            loading={signInState.loading}
-            success={signInState.success}
-            error={signInState.error}
             rememberMe={rememberMe}
-            signInRememberMeCallback={setRememberMe}
+
             signInSetEmailCallback={setEmail}
             signInSetPasswordCallback={setPassword}
+            signInRememberMeCallback={setRememberMe}
+
             signInCallback={signInCallback}
         />
     );
