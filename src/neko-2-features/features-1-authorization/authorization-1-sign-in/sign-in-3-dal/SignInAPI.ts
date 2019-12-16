@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {IGetMeData} from "../../neko-6-neko/neko-3-dal/NekoAPI";
-import {baseURL} from "../../base-url";
+import {IGetMeData} from "../../../../neko-6-neko/neko-3-dal/NekoAPI";
+import {baseURL} from "../../../../base-url";
 
 const instance = axios.create({
     baseURL

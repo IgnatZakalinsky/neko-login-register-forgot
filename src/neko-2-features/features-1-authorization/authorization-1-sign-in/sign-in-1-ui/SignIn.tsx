@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {FORGOT_PATH, REGISTER_PATH} from "../../neko-1-main/main-1-ui/Routes";
+import {FORGOT_PATH, REGISTER_PATH} from "../../../../neko-1-main/main-1-ui/Routes";
 
 interface SignInProps {
     email: string;

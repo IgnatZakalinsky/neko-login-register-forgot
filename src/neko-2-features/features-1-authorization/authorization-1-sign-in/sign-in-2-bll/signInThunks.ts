@@ -1,10 +1,10 @@
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
-import {IAppStore} from "../../neko-1-main/main-2-bll/store";
+import {IAppStore} from "../../../../neko-1-main/main-2-bll/store";
 import {ISignInActions, signInError, signInLoading, signInSuccess} from "./signInActions";
 import {SignInAPI} from "../sign-in-3-dal/SignInAPI";
-import {passwordCoding} from "../../neko-5-helpers/passwordCoding";
-import {INekoActions, nekoSetName} from "../../neko-6-neko/neko-2-bll/nekoActions";
-import {setCookie} from "../../neko-5-helpers/cookies";
+import {passwordCoding} from "../../../../neko-5-helpers/passwordCoding";
+import {INekoActions, nekoSetName} from "../../../../neko-6-neko/neko-2-bll/nekoActions";
+import {setCookie} from "../../../../neko-5-helpers/cookies";
 
 type Return = void;
 type ExtraArgument = {};
